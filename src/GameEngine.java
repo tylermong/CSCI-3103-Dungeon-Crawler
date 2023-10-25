@@ -17,7 +17,6 @@ public class GameEngine
         final int roomsNeeded = 10;
         int selection;
 
-
         while (player1.getCurrentHP() > 0)                              // create a new floor, and keep creating new floors until the player dies
         {
             Floor dungeonFloor = new Floor(player1);
@@ -31,7 +30,6 @@ public class GameEngine
             }
             System.out.println("Floor cleared! Descending to next floor...\n");
         }
-        System.exit(0);
     }
 
     /**

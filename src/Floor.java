@@ -30,7 +30,6 @@ public class Floor
         }
     }
 
-
     /**
      * Moves the player forward one room
      * @param player1   the player

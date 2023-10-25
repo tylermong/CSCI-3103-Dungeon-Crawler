@@ -146,14 +146,14 @@ public class Hero extends Entity
     {
         double preHP = maxHP, preAttack = attack, preDefense = defense, preSpeed = speed, preLevel = level;
         final double startingHP = 100, startingAttack = 10, startingDefense = 10, startingSpeed = 10;
-        final double hpGrowthRate = 0.5, attackGrowthRate = 0.45, defenseGrowthRate = 0.35, speedGrowthRate = 0.25;
+        final double growthRate = 0.5;
 
         level++;
-        maxHP = (int) ((startingHP * Math.exp(hpGrowthRate * Math.log(level))) * maxHPBuff);
+        maxHP = (int) ((startingHP * Math.exp(growthRate * Math.log(level))) * maxHPBuff);
         currentHP = maxHP;
-        attack = (int) ((startingAttack * Math.exp(attackGrowthRate * Math.log(level))) * attackBuff);
-        defense = (int) ((startingDefense * Math.exp(defenseGrowthRate * Math.log(level))) * defenseBuff);
-        speed = (int) ((startingSpeed * Math.exp(speedGrowthRate * Math.log(level))) * speedBuff);
+        attack = (int) ((startingAttack * Math.exp(growthRate * Math.log(level))) * attackBuff);
+        defense = (int) ((startingDefense * Math.exp(growthRate * Math.log(level))) * defenseBuff);
+        speed = (int) ((startingSpeed * Math.exp(growthRate * Math.log(level))) * speedBuff);
         experience -= 100;
 
         levelUpPrompt(preHP, maxHP, preAttack, attack, preDefense, defense, preSpeed, speed, preLevel, level);          // prints the level up prompt
@@ -235,7 +235,10 @@ public class Hero extends Entity
             if (currentHP <= 0)
             {
                 System.out.println("\nYou have been defeated by the monster!");
+                System.out.println("Ending Stats: ");
+                printStats();
                 System.exit(0);
+
             }
         }
     }
@@ -254,6 +257,8 @@ public class Hero extends Entity
             if (currentHP <= 0)
             {
                 System.out.println("\nYou have been defeated by the monster!");
+                System.out.println("Ending Stats: ");
+                printStats();
                 System.exit(0);
             }
 
